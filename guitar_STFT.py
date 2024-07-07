@@ -16,7 +16,7 @@ if len(waveform) % hop_size != 0:
 frame_num = int((len(waveform)-frame_size)/hop_size) + 1
 
 # divide into segments
-row = np.tile(np.arrange(0,frame_size),(frame_num,1))
+row = np.tile(np.arange(0,frame_size),(frame_num,1))
 column = np.tile(np.arange(0,frame_num*(frame_size-hop_size),(frame_size-hop_size)),(frame_size,1)).T
 index = row + column
 waveform_frame = waveform[index]
@@ -35,7 +35,7 @@ waveform_db = 20 * np.log10(waveform_pow)
 
 plt.figure(figsize=(10,10))
 plt.imshow(waveform_db)
-y_ticks = np.arrange(0, int(n_fft/2),100)
+y_ticks = np.arange(0, int(n_fft/2),100)
 plt.yticks(ticks=y_ticks, labels=y_ticks*sample_rate/n_fft)
 plt.title("Waveform_STFT")
 plt.show()
